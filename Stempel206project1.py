@@ -79,10 +79,10 @@ def findDay(a):
 	dict_DOB_counts = {}
 	for my_item in a:
 		day = my_item['DOB'].split('/')[1]
-		if day not in dict_DOB_counts:
-			dict_DOB_counts[day] = 1
-		else:
-			dict_DOB_counts[day] += 1 
+		if day in dict_DOB_counts:
+			dict_DOB_counts[day] += 1
+		elif day not in dict_DOB_counts:
+			dict_DOB_counts[day] = 1 
 	list_counts = []
 	for my_key in dict_DOB_counts.keys():
 		new_tuple = (my_key, dict_DOB_counts[my_key])
@@ -131,7 +131,8 @@ def mySortPrint(a,col,fileName):
 	my_csv.close()
 	return None
 
-#Ben Crabtree, Ava Weiner and I collaborated on some of these tasks. 
+# Link to my Project 1 Repository on Github: https://github.com/jtstempel/206-Project-1
+# Ben Crabtree, Ava Weiner and I collaborated on some of these tasks. 
 
 
 ################################################################
