@@ -14,17 +14,17 @@ def getData(file):
 
 	#Your code here:
 	my_file = open(file, 'r')
-	my_header = my_file.readline().strip().split(',')
-	big_list_data = []
-
-	for my_data in my_file.readlines():
+	my_header = my_file.readline().strip().split(',') 	# attempting to get header (only the first line) from file
+	big_list_data = []									# initializing list I want to end up with
+	reading_lines = my_file.readlines()
+	for my_data in reading_lines:						
 		my_dict_data = {}
-		my_index = 0
-		list_data = my_data.strip().split(',')
-		for key in my_header:
-			my_dict_data[key] = list_data[my_index]
-			my_index += 1
-		big_list_data.append(my_dict_data)
+		match_order = 0									
+		list_data = my_data.strip().split(',')			
+		for key in my_header:							# iterating through each dictionary in the list to grab
+			my_dict_data[key] = list_data[match_order]
+			match_order += 1 							# making sure that keys from dictionary match up to the corresponding piece of data
+		big_list_data.append(my_dict_data)  			# appending keys from dictionary to list (with data)
 	return big_list_data
 
 
@@ -129,7 +129,7 @@ def mySortPrint(a,col,fileName):
 
 		my_line = ','.join(new_list[:3])
 		my_csv.write(my_line + '\n')
-		
+
 	my_csv.close()
 	return None
 
