@@ -2,6 +2,11 @@ import os
 import filecmp
 import datetime
 
+# Link to my Project 1 Repository on Github: https://github.com/jtstempel/206-Project-1
+
+# Ben Crabtree, Ava Weiner and I collaborated on some of these tasks. We discussed what the 
+# task was generally asking of us and how we might best go about addressing it. 
+
 def getData(file):
 #Input: file name
 #Ouput: return a list of dictionary objects where 
@@ -17,10 +22,10 @@ def getData(file):
 	my_header = my_file.readline().strip().split(',') 	# attempting to get header (only the first line) from file
 	big_list_data = []									# initializing list I want to end up with
 	reading_lines = my_file.readlines()
-	for my_data in reading_lines:						
+	for my_data in reading_lines:
+		list_data = my_data.strip().split(',')							
 		my_dict_data = {}
 		match_order = 0									
-		list_data = my_data.strip().split(',')			
 		for key in my_header:							# iterating through each dictionary in the list to grab
 			my_dict_data[key] = list_data[match_order]
 			match_order += 1 							# making sure that keys from dictionary match up to the corresponding piece of data
@@ -75,18 +80,16 @@ def findDay(a):
 
 	#Your code here:
 	dict_DOB_counts = {}
+	#list_counts = []
+
 	for my_item in a:
 		day = my_item['DOB'].split('/')[1]
 		if day in dict_DOB_counts:
 			dict_DOB_counts[day] += 1
 		elif day not in dict_DOB_counts:
 			dict_DOB_counts[day] = 1 
-	list_counts = []
-	for my_key in dict_DOB_counts.keys():
-		new_tuple = (my_key, dict_DOB_counts[my_key])
-		list_counts.append(new_tuple)
-	most_common_day = sorted(list_counts, reverse = True, key = lambda x: x[1])
-	return int(most_common_day[0][0])
+
+	return int(sorted(dict_DOB_counts, key = lambda x: dict_DOB_counts[x], reverse = True)[0])
 
 
 # Find the average age (rounded) of the Students
@@ -132,10 +135,6 @@ def mySortPrint(a,col,fileName):
 
 	my_csv.close()
 	return None
-
-# Link to my Project 1 Repository on Github: https://github.com/jtstempel/206-Project-1
-# Ben Crabtree, Ava Weiner and I collaborated on some of these tasks. We discussed what the 
-# task was generally asking of us and how we might best go about addressing it. 
 
 
 ################################################################
