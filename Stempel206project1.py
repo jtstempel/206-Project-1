@@ -46,24 +46,22 @@ def classSizes(data):
 
 	#Your code here:
 	list_numbers = []
-	number_senior = 0
-	number_junior = 0
-	number_freshman = 0
-	number_sophomore = 0
+	dict_of_grades = {'Senior': 0, 'Junior': 0, 'Sophomore': 0, 'Freshman': 0}
+
 	for an_item in data:
 		if an_item['Class'] == 'Senior':
-			number_senior += 1
+			dict_of_grades['Senior'] += 1
 		elif an_item['Class'] == 'Junior':
-			number_junior += 1
+			dict_of_grades['Junior'] += 1
 		elif an_item['Class'] == 'Freshman':
-			number_freshman += 1
+			dict_of_grades['Freshman'] += 1
 		elif an_item['Class'] == 'Sophomore':
-			number_sophomore +=1
+			dict_of_grades['Sophomore'] +=1
 
-	list_numbers.append(('Senior', number_senior))
-	list_numbers.append(('Junior', number_junior))
-	list_numbers.append(('Freshman', number_freshman))
-	list_numbers.append(('Sophomore', number_sophomore))
+	list_numbers.append(('Senior', dict_of_grades['Senior']))
+	list_numbers.append(('Junior', dict_of_grades['Junior']))
+	list_numbers.append(('Freshman', dict_of_grades['Freshman']))
+	list_numbers.append(('Sophomore', dict_of_grades['Sophomore']))
 
 	return sorted(list_numbers, reverse = True, key = lambda x: x[1])
 
@@ -122,17 +120,22 @@ def mySortPrint(a,col,fileName):
 	#Your code here:
 	my_csv = open(fileName, 'w')
 	my_sorted_list = sorted(a, key = lambda x: x[col])
+
 	for thing in my_sorted_list:
 		new_list = []
+
 		for x in thing.values():
 			new_list.append(x)
+
 		my_line = ','.join(new_list[:3])
 		my_csv.write(my_line + '\n')
+		
 	my_csv.close()
 	return None
 
 # Link to my Project 1 Repository on Github: https://github.com/jtstempel/206-Project-1
-# Ben Crabtree, Ava Weiner and I collaborated on some of these tasks. 
+# Ben Crabtree, Ava Weiner and I collaborated on some of these tasks. We discussed what the 
+# task was generally asking of us and how we might best go about addressing it. 
 
 
 ################################################################
