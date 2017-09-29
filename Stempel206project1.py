@@ -80,7 +80,6 @@ def findDay(a):
 
 	#Your code here:
 	dict_DOB_counts = {}
-	#list_counts = []
 
 	for my_item in a:
 		day = my_item['DOB'].split('/')[1]
@@ -89,7 +88,8 @@ def findDay(a):
 		elif day not in dict_DOB_counts:
 			dict_DOB_counts[day] = 1 
 
-	return int(sorted(dict_DOB_counts, key = lambda x: dict_DOB_counts[x], reverse = True)[0])
+	my_sorted = sorted(dict_DOB_counts, key = lambda x: dict_DOB_counts[x], reverse = True)[0]
+	return int(my_sorted)
 
 
 # Find the average age (rounded) of the Students
